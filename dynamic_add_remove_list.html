@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage List Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f9fb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #div1 {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #div2 {
+            font-size: 1.5rem;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        li {
+            background-color: #e9f7fe;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #d1e6f4;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 70%;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        #button1 {
+            background-color: #28a745;
+            color: white;
+        }
+
+        #button2 {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">LIST ITEMS ARE:</div>
+        <ul id="ul1"></ul>
+    </div>
+    <div>
+        <form>
+            <input id="id1" placeholder="Enter data">
+            <button id="button1" type="button">Add Item</button>
+            <button id="button2" type="button">Remove Item</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("button1").addEventListener('click', add);
+        document.getElementById("button2").addEventListener('click', remove);
+
+        function add() {
+            let id1 = document.getElementById("id1");
+            let val = id1.value.trim();
+
+            if (val) {
+                let ul = document.getElementById("ul1");
+                let li = document.createElement("li");
+                li.innerHTML = val;
+                ul.appendChild(li);
+                id1.value = "";
+            } else {
+                alert("Please enter some data first.");
+            }
+        }
+
+        function remove() {
+            let ul = document.getElementById("ul1");
+            if (ul.lastChild) {
+                ul.removeChild(ul.lastChild);
+            } else {
+                alert("No items to remove.");
+            }
+        }
+    </script>
+</body>
+</html>
